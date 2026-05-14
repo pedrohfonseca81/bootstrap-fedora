@@ -1,0 +1,16 @@
+# ── Ferramentas CLI essenciais ────────────────────────────────────────────────
+bash-completion
+curl
+fzf
+git
+htop
+jq
+make
+ripgrep
+unzip
+vim-enhanced
+wget2-wget
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
+7zip

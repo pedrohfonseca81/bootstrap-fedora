@@ -1,0 +1,32 @@
+# ── Build tools / Dev libs ────────────────────────────────────────────────────
+autoconf
+bison
+cmake
+flex
+gcc
+gcc-c++
+bzip2-devel
+glib2-devel
+openssl-devel
+
+# ── Starship prompt (requer COPR atim/starship) ───────────────────────────────
+starship
+
+# ── Browser ───────────────────────────────────────────────────────────────────
+brave-browser
+
+# ── Docker (requer repositório Docker CE) ────────────────────────────────────
+containerd.io
+docker-buildx-plugin
+docker-ce
+docker-ce-cli
+docker-compose-plugin
+
+# ── Fontes ────────────────────────────────────────────────────────────────────
+jetbrains-mono-fonts
+fontawesome-6-brands-fonts
+fontawesome-6-free-fonts
+
+# ── Utilitários ───────────────────────────────────────────────────────────────
+subversion
+python3-pip

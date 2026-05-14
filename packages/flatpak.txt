@@ -1,0 +1,2 @@
+com.slack.Slack
+com.spotify.Client

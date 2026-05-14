@@ -1,0 +1,81 @@
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    icon-theme: "Adwaita";
+    font: "JetBrains Mono 12";
+    drun-display-format: "{name}";
+    display-drun: "apps";
+    display-run: "run";
+    display-window: "windows";
+}
+
+* {
+    bg: #11111b;
+    bg-alt: #181825;
+    fg: #cdd6f4;
+    accent: #89b4fa;
+    urgent: #f38ba8;
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 520px;
+    border-radius: 18px;
+    background-color: @bg;
+    border: 1px;
+    border-color: #313244;
+    padding: 18px;
+}
+
+mainbox {
+    background-color: transparent;
+    spacing: 12px;
+}
+
+inputbar {
+    padding: 12px;
+    border-radius: 12px;
+    background-color: @bg-alt;
+    children: [prompt, entry];
+}
+
+prompt {
+    text-color: @accent;
+    padding: 0 10px 0 0;
+}
+
+entry {
+    placeholder: "search apps...";
+    placeholder-color: #6c7086;
+    text-color: @fg;
+    cursor-color: @accent;
+}
+
+listview {
+    lines: 8;
+    columns: 1;
+    spacing: 6px;
+    scrollbar: false;
+}
+
+element {
+    padding: 10px 12px;
+    border-radius: 12px;
+    background-color: transparent;
+}
+
+element selected {
+    background-color: @accent;
+    text-color: #11111b;
+}
+
+element-icon {
+    size: 24px;
+    margin: 0 10px 0 0;
+}
+
+element-text {
+    vertical-align: 0.5;
+}

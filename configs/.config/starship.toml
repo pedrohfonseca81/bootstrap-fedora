@@ -1,0 +1,52 @@
+add_newline = false
+
+format = "$directory$git_branch$git_status$nodejs$elixir$rust$golang$php$python$character"
+
+[directory]
+style = "bold purple"
+truncation_length = 3
+truncate_to_repo = false
+format = "[$path]($style) "
+
+[git_branch]
+symbol = "git:"
+style = "purple"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "purple"
+format = "[$all_status$ahead_behind]($style) "
+
+[nodejs]
+symbol = "node:"
+style = "purple"
+format = "[$symbol$version]($style) "
+
+[elixir]
+symbol = "ex:"
+style = "purple"
+format = "[$symbol$version]($style) "
+
+[rust]
+symbol = "rs:"
+style = "purple"
+format = "[$symbol$version]($style) "
+
+[golang]
+symbol = "go:"
+style = "purple"
+format = "[$symbol$version]($style) "
+
+[php]
+symbol = "php:"
+style = "purple"
+format = "[$symbol$version]($style) "
+
+[python]
+symbol = "py:"
+style = "purple"
+format = "[$symbol$version]($style) "
+
+[character]
+success_symbol = "[➔](bold purple)"
+error_symbol = "[➔](bold red)"
