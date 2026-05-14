@@ -22,15 +22,21 @@ window#waybar {
 }
 
 #workspaces {
-    padding: 0 2px;
+    padding: 0;
 }
 
 #workspaces button {
     background: transparent;
     color: #8c8c96;
-    padding: 4px 6px;
+    padding: 4px 0;
     margin: 0 1px;
     border-radius: 10px;
+    min-width: 30px;
+}
+
+#workspaces button label {
+    padding: 0;
+    margin: 0 0 0 -3px;
 }
 
 #workspaces button.active {
@@ -49,7 +55,7 @@ window#waybar {
 #battery {
     background: transparent;
     color: #e8e8e8;
-    padding: 4px 6px;
+    padding: 4px 8px;
     margin: 0 1px;
     border-radius: 10px;
 }
@@ -95,26 +101,4 @@ tooltip {
 
 tooltip label {
     color: #f0f0f0;
-}
-
-#workspaces {
-    padding: 0 2px;
-}
-
-#workspaces button {
-    background: transparent;
-    color: #8c8c96;
-    padding: 4px 6px;
-    margin: 0 1px;
-    border-radius: 10px;
-}
-
-#workspaces button.active {
-    background: rgba(255, 255, 255, 0.10);
-    color: #ffffff;
-}
-
-#workspaces button:hover {
-    background: rgba(255, 255, 255, 0.06);
-    color: #ffffff;
 }
