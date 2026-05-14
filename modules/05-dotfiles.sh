@@ -24,50 +24,35 @@ if [[ ! -d "$CONFIGS_DIR" ]]; then
   exit 0
 fi
 
-link_or_copy() {
+deploy() {
   local src="$1"
   local dst="$2"
 
+  [[ -e "$src" ]] || { log_warn "Não encontrado: $src — pulando."; return; }
+
   mkdir -p "$(dirname "$dst")"
 
-  if [[ -L "$dst" ]]; then
-    log_warn "Symlink já existe: $dst — substituindo."
-    rm "$dst"
-  elif [[ -e "$dst" ]]; then
-    log_warn "Backup de $dst → ${dst}.bak"
-    mv "$dst" "${dst}.bak"
+  if [[ -e "$dst" || -L "$dst" ]]; then
+    rm -rf "$dst"
   fi
 
-  if command -v stow &>/dev/null; then
-    # Stow cuida do link, nada a fazer aqui (chamado uma vez por pacote)
-    return 0
-  else
-    cp -r "$src" "$dst"
-    log_success "Copiado: $dst"
-  fi
+  cp -r "$src" "$dst"
+  log_success "$(basename "$src") → $dst"
 }
 
-# ── Usa stow se disponível ────────────────────────────────────────────────────
-if command -v stow &>/dev/null; then
-  log_info "Usando GNU Stow para linkar configs..."
-  stow --dir="$CONFIGS_DIR" --target="$HOME" --restow . 2>&1 | grep -v '^$' || true
-  log_success "Stow concluído."
-else
-  # ── Fallback: cópia manual ────────────────────────────────────────────────
-  log_info "stow não encontrado — copiando configs manualmente..."
-
-  [[ -d "$CONFIGS_DIR/.config/hypr"     ]] && link_or_copy "$CONFIGS_DIR/.config/hypr"     "$HOME/.config/hypr"
-  [[ -d "$CONFIGS_DIR/.config/waybar"   ]] && link_or_copy "$CONFIGS_DIR/.config/waybar"   "$HOME/.config/waybar"
-  [[ -d "$CONFIGS_DIR/.config/kitty"    ]] && link_or_copy "$CONFIGS_DIR/.config/kitty"    "$HOME/.config/kitty"
-  [[ -d "$CONFIGS_DIR/.config/rofi"     ]] && link_or_copy "$CONFIGS_DIR/.config/rofi"     "$HOME/.config/rofi"
-  [[ -d "$CONFIGS_DIR/.config/gtk-3.0"  ]] && link_or_copy "$CONFIGS_DIR/.config/gtk-3.0"  "$HOME/.config/gtk-3.0"
-  [[ -d "$CONFIGS_DIR/.config/gtk-4.0"  ]] && link_or_copy "$CONFIGS_DIR/.config/gtk-4.0"  "$HOME/.config/gtk-4.0"
-  [[ -d "$CONFIGS_DIR/.config/zed"      ]] && link_or_copy "$CONFIGS_DIR/.config/zed"      "$HOME/.config/zed"
-  [[ -f "$CONFIGS_DIR/.config/starship.toml" ]] && link_or_copy "$CONFIGS_DIR/.config/starship.toml" "$HOME/.config/starship.toml"
-  [[ -f "$CONFIGS_DIR/.zshrc"           ]] && link_or_copy "$CONFIGS_DIR/.zshrc"           "$HOME/.zshrc"
-
-  log_success "Configs copiadas."
-fi
+log_info "Copiando configs..."
+deploy "$CONFIGS_DIR/.config/hypr"          "$HOME/.config/hypr"
+deploy "$CONFIGS_DIR/.config/waybar"        "$HOME/.config/waybar"
+deploy "$CONFIGS_DIR/.config/kitty"         "$HOME/.config/kitty"
+deploy "$CONFIGS_DIR/.config/rofi"          "$HOME/.config/rofi"
+deploy "$CONFIGS_DIR/.config/gtk-3.0"       "$HOME/.config/gtk-3.0"
+deploy "$CONFIGS_DIR/.config/gtk-4.0"       "$HOME/.config/gtk-4.0"
+deploy "$CONFIGS_DIR/.config/zed"           "$HOME/.config/zed"
+deploy "$CONFIGS_DIR/.config/starship.toml" "$HOME/.config/starship.toml"
+deploy "$CONFIGS_DIR/.config/mise"          "$HOME/.config/mise"
+deploy "$CONFIGS_DIR/.zshrc"                "$HOME/.zshrc"
+deploy "$CONFIGS_DIR/.profile"              "$HOME/.profile"
+log_success "Configs copiadas."
 
 # ── JetBrainsMono Nerd Font (necessário para ícones do waybar) ───────────────
 FONT_DIR="$HOME/.local/share/fonts/JetBrainsMono"
