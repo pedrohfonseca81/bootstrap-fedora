@@ -28,8 +28,8 @@ window#waybar {
 #workspaces button {
     background: transparent;
     color: #8c8c96;
-    padding: 4px 10px;
-    margin: 0 2px;
+    padding: 4px 6px;
+    margin: 0 1px;
     border-radius: 10px;
 }
 
@@ -49,8 +49,8 @@ window#waybar {
 #battery {
     background: transparent;
     color: #e8e8e8;
-    padding: 4px 10px;
-    margin: 0 2px;
+    padding: 4px 6px;
+    margin: 0 1px;
     border-radius: 10px;
 }
 
@@ -104,8 +104,8 @@ tooltip label {
 #workspaces button {
     background: transparent;
     color: #8c8c96;
-    padding: 4px 10px;
-    margin: 0 2px;
+    padding: 4px 6px;
+    margin: 0 1px;
     border-radius: 10px;
 }
 
