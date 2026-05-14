@@ -1,5 +1,6 @@
 # ── Hyprland core ────────────────────────────────────────────────────────────
 hyprland
+hyprland-qtutils
 hypridle
 hyprlock
 hyprpaper
@@ -49,6 +50,7 @@ firefox
 
 # ── Rede ─────────────────────────────────────────────────────────────────────
 nm-connection-editor
+network-manager-applet
 
 # ── GTK / Temas ───────────────────────────────────────────────────────────────
 adw-gtk3-theme
