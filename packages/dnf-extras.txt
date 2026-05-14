@@ -12,9 +12,6 @@ openssl-devel
 # ── Starship prompt (requer COPR atim/starship) ───────────────────────────────
 starship
 
-# ── Browser ───────────────────────────────────────────────────────────────────
-brave-browser
-
 # ── Docker (requer repositório Docker CE) ────────────────────────────────────
 containerd.io
 docker-buildx-plugin

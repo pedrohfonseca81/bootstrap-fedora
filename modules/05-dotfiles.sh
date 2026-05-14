@@ -69,6 +69,22 @@ else
   log_success "Configs copiadas."
 fi
 
+# ── JetBrainsMono Nerd Font (necessário para ícones do waybar) ───────────────
+FONT_DIR="$HOME/.local/share/fonts/JetBrainsMono"
+if [[ ! -d "$FONT_DIR" ]]; then
+  log_info "Instalando JetBrainsMono Nerd Font..."
+  mkdir -p "$FONT_DIR"
+  curl -fsSL \
+    https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip \
+    -o /tmp/JetBrainsMono.zip
+  unzip -o /tmp/JetBrainsMono.zip -d "$FONT_DIR/" > /dev/null
+  rm /tmp/JetBrainsMono.zip
+  fc-cache -fv "$FONT_DIR" > /dev/null
+  log_success "JetBrainsMono Nerd Font instalada."
+else
+  log_success "JetBrainsMono Nerd Font já instalada."
+fi
+
 # ── Instala Zed (não está nos repos, binário local) ───────────────────────────
 if [[ ! -f "$HOME/.local/zed.app/libexec/zed-editor" ]]; then
   log_info "Instalando Zed editor..."
