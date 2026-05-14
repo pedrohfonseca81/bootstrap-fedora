@@ -15,10 +15,15 @@
     "clock"
   ],
   "modules-right": [
+    "tray",
     "network",
     "pulseaudio",
     "battery"
   ],
+
+  "tray": {
+    "spacing": 6
+  },
 
   "hyprland/workspaces": {
 	  "disable-scroll": true,
