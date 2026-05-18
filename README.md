@@ -16,7 +16,7 @@ O bootstrap roda em módulos, sempre na mesma ordem:
 | --- | --- |
 | `01-network.sh` | valida internet, instala dependências mínimas e atualiza o sistema |
 | `02-repos.sh` | adiciona RPM Fusion, COPRs do Hyprland/Starship, Brave e Docker CE |
-| `03-packages.sh` | instala pacotes DNF de base, desktop e desenvolvimento |
+| `03-packages.sh` | instala pacotes DNF de base, desktop, portal e desenvolvimento |
 | `04-flatpak.sh` | configura Flathub e instala apps Flatpak |
 | `05-dotfiles.sh` | copia as configurações de `configs/` para o usuário real |
 | `06-mise.sh` | instala o `mise` e as versões definidas em `.tool-versions` |
@@ -54,6 +54,7 @@ As configurações aplicadas pelo bootstrap ficam em `configs/`:
 - Starship
 - Zed
 - mise
+- XDG Desktop Portal
 - `.zshrc`
 - `.profile`
 
@@ -125,6 +126,23 @@ Também existem regras para organizar janelas por workspace:
 | `4` | Zed |
 | `5` | Spotify |
 
+## Portal
+
+O setup instala os pacotes `xdg-desktop-portal`, `xdg-desktop-portal-hyprland`
+e `xdg-desktop-portal-gtk`.
+
+A preferência fica versionada em
+`configs/.config/xdg-desktop-portal/hyprland-portals.conf`:
+
+```ini
+[preferred]
+default=hyprland;gtk
+org.freedesktop.impl.portal.FileChooser=gtk
+```
+
+Na prática, o backend do Hyprland fica como padrão e o GTK cobre o file picker,
+que é usado por apps Flatpak, browsers e outros programas que chamam portals.
+
 ## Estrutura
 
 ```text
@@ -154,6 +172,7 @@ Também existem regras para organizar janelas por workspace:
 - Os scripts usam `set -euo pipefail`.
 - Alguns módulos rodam como root, outros reexecutam como usuário real.
 - O SDDM é configurado para Wayland e Hyprland.
+- O XDG Desktop Portal usa Hyprland como backend principal e GTK para file picker.
 - Docker é habilitado e o usuário é adicionado ao grupo `docker`.
 - Zed é instalado via script oficial quando ainda não existe localmente.
 - A fonte JetBrainsMono Nerd Font é instalada para manter ícones e Waybar OK.

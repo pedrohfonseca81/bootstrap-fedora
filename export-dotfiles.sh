@@ -60,6 +60,9 @@ copy_config "$HOME/.config/zed"                    ".config/zed"
 # ── mise ──────────────────────────────────────────────────────────────────────
 copy_config "$HOME/.config/mise/config.toml"       ".config/mise/config.toml"
 
+# ── XDG Desktop Portal ────────────────────────────────────────────────────────
+copy_config "$HOME/.config/xdg-desktop-portal"     ".config/xdg-desktop-portal"
+
 # ── .tool-versions (raiz do repo) ────────────────────────────────────────────
 if [[ -f "$HOME/.config/mise/config.toml" ]]; then
   # Gera .tool-versions a partir do mise config

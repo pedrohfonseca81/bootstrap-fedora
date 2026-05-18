@@ -5,7 +5,9 @@ hypridle
 hyprlock
 hyprpaper
 hyprpicker
+xdg-desktop-portal
 xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
 
 # ── Status bar ────────────────────────────────────────────────────────────────
 waybar
